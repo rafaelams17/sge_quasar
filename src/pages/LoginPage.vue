@@ -40,8 +40,8 @@
             ></q-input>
             <div>
               <q-btn
+                style="background: #ed6104"
                 class="full-width"
-                color="primary"
                 label="Login"
                 type="submit"
                 rounded
