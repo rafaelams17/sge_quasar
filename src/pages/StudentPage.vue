@@ -29,13 +29,23 @@
           </template>
         </q-input>
       </template>
+      <template v-slot:body-cell-acoes="props">
+        <q-td :props="props">
+          <q-btn icon="delete" class="q-mr-md" />
+          <q-btn icon="edit" title="Editar" color="orange-8" />
+        </q-td>
+      </template>
     </q-table>
   </div>
 </template>
 
-<script>
-import { ref, defineComponent } from "vue";
+<script setup>
+import { ref, onMounted } from "vue";
 import { useQuasar } from "quasar";
+import CadastroPage from "../pages/CadastroPage.vue";
+import { useRouter } from "vue-router";
+import { api } from "src/boot/axios";
+import routes from "src/router/routes";
 
 const columns = [
   {
@@ -43,9 +53,7 @@ const columns = [
     required: true,
     label: "Nome Completo",
     align: "left",
-    field: (row) => row.name,
-    format: (val) => `${val}`,
-    sortable: true,
+    field: "name",
   },
   {
     name: "cpf",
@@ -53,7 +61,6 @@ const columns = [
     label: "CPF",
     align: "center",
     field: "cpf",
-    sortable: true,
   },
   {
     name: "data_nasc",
@@ -61,7 +68,6 @@ const columns = [
     label: "Data de Nascimento",
     align: "center",
     field: "data_nasc",
-    sortable: true,
   },
   {
     name: "modulo",
@@ -69,87 +75,88 @@ const columns = [
     label: "Módulo",
     align: "center",
     field: "modulo",
-    sortable: true,
   },
   {
     name: "acoes",
     label: "Ações",
     align: "center",
     field: "acoes",
-    sortable: true,
   },
 ];
 
-const originalRows = [
-  {
-    name: "Rafaela",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-  {
-    name: "Rafaela",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-  {
-    name: "Rafaela",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-  {
-    name: "Rafaela",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-  {
-    name: "Rafaela",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-  {
-    name: "Teste",
-    cpf: "12345678910",
-    data_nasc: "07/09/1999",
-    modulo: "A",
-    acoes: "",
-  },
-];
+const rows = ref([]);
 
-export default defineComponent({
-  name: "StudentPage",
+async function buscaDados() {
+  const { data } = await api.get("/alunos");
+  console.log(data);
+  rows.value = data;
+  // results.map((value) => {
+  //   console.log("aqui", value);
+  //   rows.value = value;
+  // });
+}
 
-  setup() {
-    const $q = useQuasar();
-    const loading = ref(false);
-    const filter = ref("");
-    const rowCount = ref(10);
-    const rows = ref([...originalRows]);
+// const originalRows = [
+//   {
+//     name: "Rafaela",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+//   {
+//     name: "Rafaela",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+//   {
+//     name: "Rafaela",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+//   {
+//     name: "Rafaela",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+//   {
+//     name: "Rafaela",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+//   {
+//     name: "Teste",
+//     cpf: "12345678910",
+//     data_nasc: "07/09/1999",
+//     modulo: "A",
+//     acoes: "",
+//   },
+// ];
 
-    return {
-      columns,
-      rows,
-      loading,
-      filter,
-      rowCount,
+const router = useRouter();
+const $q = useQuasar();
+const loading = ref(false);
+const filter = ref("");
 
-      addAluno() {
-        $q.notify({
-          type: "info",
-          message: "Falta a tela de cadastro do aluno",
-        });
-      },
-    };
-  },
+function addAluno() {
+  router.push("/cadastro");
+  console.log("Add");
+
+  $q.notify({
+    type: "info",
+    message: "Falta a tela de cadastro do aluno",
+  });
+}
+onMounted(() => {
+  buscaDados();
 });
 </script>
 

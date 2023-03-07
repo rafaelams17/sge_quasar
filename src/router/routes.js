@@ -16,6 +16,10 @@ const routes = [
         path: "/modulos",
         component: () => import("pages/ModulePage.vue"),
       },
+      {
+        path: "/cadastro",
+        component: () => import("pages/CadastroPage.vue"),
+      },
     ],
   },
 

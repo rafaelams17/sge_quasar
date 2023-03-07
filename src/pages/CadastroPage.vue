@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <CadastroForm />
 </template>
 
-<script></script>
+<script setup>
+import CadastroForm from "../components/form/CadastroForm.vue";
+</script>
