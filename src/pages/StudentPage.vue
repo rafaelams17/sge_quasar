@@ -148,12 +148,6 @@ const filter = ref("");
 
 function addAluno() {
   router.push("/cadastro");
-  console.log("Add");
-
-  $q.notify({
-    type: "info",
-    message: "Falta a tela de cadastro do aluno",
-  });
 }
 onMounted(() => {
   buscaDados();
