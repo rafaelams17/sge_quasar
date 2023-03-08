@@ -1,13 +1,63 @@
 <template>
-  <div class="q-pa-md" style="max-width: 400px">
-    <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+  <div class="q-pa-md">
+    <p>Cadastro de Alunos</p>
+    <q-form @submit="onSubmit" @reset="onReset">
       <!-- Input -->
-      <q-input label="Nome " />
-      <q-input label="Sobrenome " />
-      <q-input label="Data de Nascimento" />
-      <q-input label="CPF" />
-      <q-input label="E-mail " />
-      <q-input label="Módulo" />
+      <div style="width: 600px">
+        <q-input
+          v-model="nome"
+          outlined
+          label="Nome "
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+        <q-input
+          v-model="sobrenome"
+          outlined
+          label="Sobrenome"
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+
+        <q-input
+          v-model="date"
+          outlined
+          type="date"
+          label="Data de Nascimento"
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+
+        <q-input
+          v-model="cpf"
+          outlined
+          label="CPF"
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+        <q-input
+          v-model="email"
+          outlined
+          type="email"
+          label="Email"
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+        <q-input
+          v-model="modulo"
+          outlined
+          type="text"
+          label="Módulo"
+          stack-label
+          :dense="dense"
+          style="margin-bottom: 15px"
+        />
+      </div>
 
       <!-- Botões -->
       <div>
@@ -25,3 +75,9 @@
 </template>
 
 <script setup></script>
+
+<style scoped>
+p {
+  font-size: 20px;
+}
+</style>
