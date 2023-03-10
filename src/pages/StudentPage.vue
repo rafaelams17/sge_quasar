@@ -51,16 +51,16 @@ const columns = [
   {
     name: "name",
     required: true,
-    label: "Nome Completo",
+    label: "Nome",
     align: "left",
     field: "name",
   },
   {
-    name: "cpf",
+    name: "sobrenome",
     required: true,
-    label: "CPF",
-    align: "center",
-    field: "cpf",
+    label: "Sobrenome",
+    align: "left",
+    field: "sobrenome",
   },
   {
     name: "data_nasc",
@@ -70,11 +70,32 @@ const columns = [
     field: "data_nasc",
   },
   {
+    name: "cpf",
+    required: true,
+    label: "CPF",
+    align: "center",
+    field: "cpf",
+  },
+  {
+    name: "email",
+    required: true,
+    label: "E-mail",
+    align: "center",
+    field: "email",
+  },
+  {
     name: "modulo",
     required: true,
     label: "Módulo",
     align: "center",
     field: "modulo",
+  },
+  {
+    name: "situacao",
+    required: true,
+    label: "Situação",
+    align: "center",
+    field: "situacao",
   },
   {
     name: "acoes",
@@ -90,10 +111,6 @@ async function buscaDados() {
   const { data } = await api.get("/alunos");
   console.log(data);
   rows.value = data;
-  // results.map((value) => {
-  //   console.log("aqui", value);
-  //   rows.value = value;
-  // });
 }
 
 // const originalRows = [

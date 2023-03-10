@@ -1,9 +1,9 @@
 <template>
   <div class="q-pa-md">
-    <p>Cadastro de Alunos</p>
+    <p style="text-align: center">Cadastro de Alunos</p>
     <q-form @submit="onSubmit" @reset="onReset">
       <!-- Input -->
-      <div style="width: 600px">
+      <div style="width: 800px; margin: 0 auto">
         <q-input
           v-model="nome"
           outlined
@@ -60,7 +60,7 @@
       </div>
 
       <!-- Botões -->
-      <div>
+      <div style="margin-top: 50px; text-align: center">
         <q-btn label="Cadastrar" type="submit" color="primary" />
         <q-btn
           label="Cancelar"
@@ -78,6 +78,6 @@
 
 <style scoped>
 p {
-  font-size: 20px;
+  font-size: 2em;
 }
 </style>
