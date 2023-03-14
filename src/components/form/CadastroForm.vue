@@ -5,7 +5,7 @@
       <!-- Input -->
       <div style="width: 800px; margin: 0 auto">
         <q-input
-          v-model="nome"
+          v-model="form.nome"
           outlined
           label="Nome "
           stack-label
@@ -13,7 +13,7 @@
           style="margin-bottom: 15px"
         />
         <q-input
-          v-model="sobrenome"
+          v-model="form.sobrenome"
           outlined
           label="Sobrenome"
           stack-label
@@ -22,7 +22,7 @@
         />
 
         <q-input
-          v-model="date"
+          v-model="form.data_nasc"
           outlined
           type="date"
           label="Data de Nascimento"
@@ -32,7 +32,7 @@
         />
 
         <q-input
-          v-model="cpf"
+          v-model="form.cpf"
           outlined
           label="CPF"
           stack-label
@@ -40,7 +40,7 @@
           style="margin-bottom: 15px"
         />
         <q-input
-          v-model="email"
+          v-model="form.email"
           outlined
           type="email"
           label="Email"
@@ -49,7 +49,7 @@
           style="margin-bottom: 15px"
         />
         <q-input
-          v-model="modulo"
+          v-model="form.modulo"
           outlined
           type="text"
           label="Módulo"
@@ -74,7 +74,45 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useQuasar } from "quasar";
+import { ref } from "vue";
+
+const $q = useQuasar();
+
+const form = ref({
+  nome: "",
+  sobrenome: "",
+  data_nasc: "",
+  cpf: "",
+  email: "",
+  modulo: "",
+});
+
+async function onSubmit() {
+  if (
+    // Para poder referenciar ao objeto criado aqui
+    form.value.nome == "" ||
+    form.value.sobrenome == "" ||
+    form.value.data_nasc == "" ||
+    form.value.cpf == "" ||
+    form.value.email == "" ||
+    form.value.modulo == ""
+  ) {
+    $q.notify({
+      type: "negative",
+      message: "Campos vazios! Preencha corretamente.",
+    });
+    console.log("Error!");
+  } else {
+    $q.notify({
+      type: "info",
+      message: "Cadastro realizado com sucesso",
+    });
+    console.log("Feito!");
+  }
+}
+</script>
 
 <style scoped>
 p {
