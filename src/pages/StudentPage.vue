@@ -113,51 +113,6 @@ async function buscaDados() {
   rows.value = data;
 }
 
-// const originalRows = [
-//   {
-//     name: "Rafaela",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-//   {
-//     name: "Rafaela",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-//   {
-//     name: "Rafaela",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-//   {
-//     name: "Rafaela",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-//   {
-//     name: "Rafaela",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-//   {
-//     name: "Teste",
-//     cpf: "12345678910",
-//     data_nasc: "07/09/1999",
-//     modulo: "A",
-//     acoes: "",
-//   },
-// ];
-
 const router = useRouter();
 const $q = useQuasar();
 const loading = ref(false);

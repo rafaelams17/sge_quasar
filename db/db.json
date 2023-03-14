@@ -30,5 +30,12 @@
       "modulo": "A",
       "situacao": "Aprovado"
     }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "username": "Rafa",
+      "password": "123456"
+    }
   ]
 }

@@ -2,10 +2,11 @@
   "name": "sge-quasar",
   "version": "0.0.1",
   "description": "Este projeto está sendo desenvolvido para o aprendizado do Framework Quasar",
-  "productName": "Quasar App",
+  "productName": "SGE",
   "author": "rafaela <rafaelasantosminios@gmail.com>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
